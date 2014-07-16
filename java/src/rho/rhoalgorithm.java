@@ -28,7 +28,7 @@ public class rhoalgorithm {
      * @param N - long integer to factorize
      * @return long integer
      */
-    public static BigInteger factorize(BigInteger N, BigInteger max){
+    public static BigInteger factorize(BigInteger N, int max){
         BigInteger divisor;
 
         if(N.compareTo(THREE) < 0 || N.mod(TWO).equals(ZERO)){
@@ -47,28 +47,24 @@ public class rhoalgorithm {
         BigInteger x_i = func(x_zero,N);
         divisor = x_i.subtract(x_zero).gcd(N);
 
-        if(divisor.equals(ONE) || divisor.equals(NONE)){
+        if(!divisor.equals(ONE) && !divisor.equals(NONE) && !divisor.equals(N)){
             return divisor;
         }
 
         BigInteger x_j = x_i;
-        int bitsActual = 2;
-        BigInteger k = ONE;
-
-        for(BigInteger i = TWO; i.compareTo(max) < 0; i.add(ONE)){
-
-            BigInteger j = TWO.pow(Integer.parseInt(i.subtract(ONE).toString())).subtract(ONE);
-            if(i.bitLength() > bitsActual){
-                //Integer iBits = Integer.parseInt(new Integer(i.bitLength()-2).toString());
-                k =TWO.pow(i.bitLength()-2).subtract(ONE);
-                x_j = nextValue(x_j, j.subtract(k), N);
-                bitsActual = i.bitLength();
+        int current = 2, nextIn = 0, i = 2;
+        while(i < max){
+            if(nextIn == current){
+                x_j = nextValue(x_j, current, N);
+                current *= 2;
             }
             x_i = func(x_i,N);
             divisor  = x_i.subtract(x_j).gcd(N);
             if(!divisor.equals(ONE) && !divisor.equals(NONE) && !divisor.equals(N)){
                 return divisor;
             }
+            i += 1;
+            nextIn += 1;
         }
 
         return divisor;
@@ -81,8 +77,8 @@ public class rhoalgorithm {
      * @param N - BigInteger number to factorize (base).
      * @return the next value as a BigInteger.
      */
-    private static BigInteger nextValue(BigInteger initial, BigInteger k, BigInteger N){
-        for(BigInteger i = ZERO; i.compareTo(k) < 0; i.add(ONE)){
+    private static BigInteger nextValue(BigInteger initial, int k, BigInteger N){
+        for(int i = 0; i < k; ++i){
             initial = initial.multiply(initial).add(ONE).mod(N);
         }
         return initial;
@@ -91,6 +87,7 @@ public class rhoalgorithm {
     /**
      * Calculates the value of the number in the funcion. In this case the function is x^2 + 1.
      * @param x - BigInteger, number to find the value.
+     * @param N - BigInteger base.
      * @return the value of f(x).
      */
     private static BigInteger func(BigInteger x, BigInteger N){

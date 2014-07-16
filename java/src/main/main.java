@@ -12,7 +12,9 @@ public class main {
     public static void main(String [] args)
     {
         //ask for a number to factorize
-        Scanner number = new Scanner(System.in);
-        System.out.println("One posible factor is: " + rhoalgorithm.factorize(number.nextBigInteger(), new BigInteger("100000")).toString());
+        Scanner input = new Scanner(System.in);
+        BigInteger nToFactorize = input.nextBigInteger();
+        System.out.println("One posible factor is: " + rhoalgorithm.factorize(nToFactorize, 400000).toString());
+
     }
 }
