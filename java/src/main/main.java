@@ -1,19 +1,18 @@
 package main;
 
+import rho.rhoalgorithm;
+
+import java.math.BigInteger;
+import java.util.Scanner;
+
 /**
  * Created by Light on 10/07/14.
  */
 public class main {
     public static void main(String [] args)
     {
-        //create rhoalgorithm object
-
         //ask for a number to factorize
-
-        //check if its a number
-
-        //call the method and print the ouput
-
-
+        Scanner number = new Scanner(System.in);
+        System.out.println("One posible factor is: " + rhoalgorithm.factorize(number.nextBigInteger(), new BigInteger("100000")).toString());
     }
 }
