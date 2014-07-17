@@ -8,11 +8,6 @@ import java.math.BigInteger;
 public class Rhoalgorithm extends Thread{
 
     //Attributes
-    private final static BigInteger NONE = new BigInteger("-1"); //negative one
-    private final static BigInteger ZERO = new BigInteger("0");
-    private final static BigInteger ONE  = new BigInteger("1");
-    private final static BigInteger TWO  = new BigInteger("2");
-    private final static BigInteger THREE  = new BigInteger("3");
     private BigInteger N;
     private Value currentVal;
 
@@ -33,8 +28,8 @@ public class Rhoalgorithm extends Thread{
         BigInteger divisor, x_i = this.currentVal.getValue();
         int currentLength = this.currentVal.getCalcLength();
 
-        if(N.compareTo(THREE) < 0 || N.mod(TWO).equals(ZERO)){
-            return N.divide(TWO);
+        if(N.compareTo(RhoUtils.THREE) < 0 || N.mod(RhoUtils.TWO).equals(RhoUtils.ZERO)){
+            return N.divide(RhoUtils.TWO);
         }
 
         BigInteger x_j = x_i;
@@ -42,7 +37,7 @@ public class Rhoalgorithm extends Thread{
         while(iters < currentLength){
             x_i = Function.calc(x_i, N);
             divisor  = x_i.subtract(x_j).gcd(N);
-            if(!divisor.equals(ONE) && !divisor.equals(NONE) && !divisor.equals(N)){
+            if(!divisor.equals(RhoUtils.ONE) && !divisor.equals(RhoUtils.NONE) && !divisor.equals(N)){
                 return divisor;
             }
             iters += 1;
