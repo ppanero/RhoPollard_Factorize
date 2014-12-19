@@ -38,7 +38,7 @@ public class ValuesCalculator extends Thread {
         try {
             this.values.put(this.base);
         } catch (InterruptedException e) {
-            System.out.println("AN unexpectederror ocurred while trying to claculate next base");
+            System.out.println("An unexpectederror ocurred while trying to claculate next base");
         }
 
     }

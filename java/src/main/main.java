@@ -48,6 +48,9 @@ public class Main {
                         alg.start();
                     }
                     //TODO: use future and callable
+                    for(Rhoalgorithm alg : factoringThreads){
+                        alg.join();
+                    }
                     System.out.println("One posible factor is: " + factor.toString());
                 }
             }while(nToFactorize.equals(RhoUtils.ZERO));
@@ -59,7 +62,7 @@ public class Main {
             System.out.println("No such element exception");
         }
         catch(IllegalStateException e){
-            System.out.println("Illegal state exception occured");
+            System.out.println("Illegal state exception");
         }
         catch(Exception e){
             System.out.println("An unhandled exception occured...Sorry :(");
