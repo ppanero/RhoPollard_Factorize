@@ -3,7 +3,7 @@ package rho;
 import java.math.BigInteger;
 
 /**
- * Created by Light on 10/07/14.
+ * This class represents a rhoalgorithm thread.
  */
 public class Rhoalgorithm extends Thread{
 
@@ -21,7 +21,7 @@ public class Rhoalgorithm extends Thread{
 
     /**
      * Receive a long integer and return the first factor found, if there are no
-     * factor when the limit is reached, then its returns the number received.
+     * factor when the limit is reached, then its returns the received number.
      * @return long integer
      */
     private BigInteger factorize(){

@@ -3,7 +3,7 @@ package rho;
 import java.math.BigInteger;
 
 /**
- * Created by Light on 16/07/14.
+ * This class represents a value. It contains the value itself and the necessary length to reach it.
  */
 public class Value {
 

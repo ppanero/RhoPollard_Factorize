@@ -12,7 +12,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
- * Created by Light on 10/07/14.
+ *  This class represents the main functionality. It gets the followings values through which to iterate and send them
+ *  to the rho calculator. When it gets one different from the one to factorize it ends and shows it.
  */
 public class Main {
     public static void main(String [] args)
